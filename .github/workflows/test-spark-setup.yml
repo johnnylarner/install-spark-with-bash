@@ -33,7 +33,8 @@ jobs:
           echo "Hadoop Version: $HADOOP_VERSION"
           SCALA_VERSION=""
           echo "Scala Version: $SCALA_VERSION"
-          SPARK_URL="https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION$SCALA_VERSION.tgz"
+          INSTALL_SLUG="spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION$SCALA_VERSION"
+          SPARK_URL="https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/$INSTALL_SLUG.tgz"
           echo "Spark download URL: $SPARK_URL"
 
           echo "Workspace: $GITHUB_WORKSPACE"
@@ -44,7 +45,7 @@ jobs:
 
           # Iterate thru array and recreate path
           # Ignore last path part and empty strings
-          INSTALL_FOLDER=''
+          INSTALL_ROOT_FOLDER=''
           for ((idx=0; idx<${#PATH_PARTS[@]}-1; ++idx)); do
               # Debug
               echo "$idx" "${PATH_PARTS[idx]}"
@@ -52,25 +53,42 @@ jobs:
               # Concat string
               if ! [   "${PATH_PARTS[idx]}" = ""  ];
               then 
-                INSTALL_FOLDER+="/${PATH_PARTS[idx]}"
+                INSTALL_ROOT_FOLDER+="/${PATH_PARTS[idx]}"
                 # Debug
-                echo "$INSTALL_FOLDER"
+                echo "$INSTALL_ROOT_FOLDER"
               fi
           done
-          echo "Proposed install folder: $INSTALL_FOLDER"
+          echo "Proposed install folder: $INSTALL_ROOT_FOLDER"
 
           # Check if proposed folder is writable
           # If not, revert install folder to GITHUB_WORKSPACE
-          if [ -w "$INSTALL_FOLDER" ];
+          if [ -w "$INSTALL_ROOT_FOLDER" ];
           then
-            echo "Proposed install folder is writeable"
+            echo "Proposed install root folder is writeable"
           else
             echo "Proposed install folder is not writeable, reverting to workspace folder"
-            INSTALL_FOLDER="$GITHUB_WORKSPACE"
+            INSTALL_ROOT_FOLDER="$GITHUB_WORKSPACE"
           fi
           
           # Debug
-          echo "Final install folder: $INSTALL_FOLDER"
+          echo "Final install root folder: $INSTALL_ROOT_FOLDER"
+
+          INSTALL_PATH="$INSTALL_ROOT_FOLDER/$INSTALL_SLUG"
+          echo "Checking if full install path exits"
+          if [ -d "$INSTALL_PATH" ];
+          then
+            echo "Following install path located in runner:\n $INSTALL_PATH"
+            echo "Deleting..."
+            rm -rf "INSTALL_PATH"
+
+
+
+
+
+
+
+          
+
 
           
 
