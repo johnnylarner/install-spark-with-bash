@@ -55,7 +55,7 @@ jobs:
           then
             echo "Proposed install folder is writeable"
           else
-            echo "Proposed install folder is not writeable"
+            echo "Proposed install folder is not writeable, reverting to workspace folder"
             INSTALL_FOLDER="$GITHUB_WORKSPACE"
           fi
           
