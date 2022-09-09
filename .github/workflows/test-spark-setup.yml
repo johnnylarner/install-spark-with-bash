@@ -14,11 +14,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Check Python install
-        runs: |
+        run: |
           PY_VERSION=$(python3 --version)
           echo $PY_VERSION
 
       - name: Check Java install
-        runs: |
+        run: |
           JAR_VERSION=$(java -version)
           echo $JAR_VERSION
