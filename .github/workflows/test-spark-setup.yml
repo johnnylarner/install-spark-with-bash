@@ -94,11 +94,8 @@ jobs:
           echo "Installation completed at: $INSTALL_PATH" ||
           echo "Installation failed."
 
-          cd /etc/
-          ls .
-
           echo "Setting up environment variables"
-          echo export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark" >> /etc/profile
+          echo "export SPARK_HOME=$INSTALL_ROOT_FOLDER/spark" >> /etc/profile
           echo export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"  >> /etc/profile
           echo export PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"  >> /etc/profile
           echo export PYSPARK_PYTHON="python"  >> /etc/profile
@@ -109,7 +106,7 @@ jobs:
 
           # spark-submit --version
 
-      # - name: Test Spark Installation
-      #   run: | 
-      #     echo "$SPARK_HOME"
+      - name: Test Spark Installation
+        run: | 
+          echo "$SPARK_HOME"
       #     spark-submit --version
