@@ -92,15 +92,5 @@ jobs:
           echo "Installation completed at: $INSTALL_PATH" ||
           echo "Installation failed."
 
-
-
-
-
-
-
-          
-
-
-          
-
-
+      - name: Test installation succeeded
+        run: spark-submit --version
