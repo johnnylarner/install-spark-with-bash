@@ -36,7 +36,7 @@ jobs:
 
               if ! [   "$PATH_PATH" = " "  ];
               then 
-                INSTALL_FOLDER+="/${PATH_PARTS[idx]}"
+                INSTALL_FOLDER+="/$PATH_PATH"
                 echo "$INSTALL_FOLDER"
               fi
           done
