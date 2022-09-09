@@ -30,13 +30,13 @@ jobs:
           read -a PATH_PARTS <<< "$GITHUB_WORKSPACE"
           echo "There are ${#PATH_PARTS[*]} words in the text."
           INSTALL_FOLDER=''
-          for ((idx=0; idx<${#PATH_PARTS[@]}-1; ++idx)); do
+          for ((idx=1; idx<${#PATH_PARTS[@]}-1; ++idx)); do
               PATH_PART="${PATH_PARTS[idx]}"
-              echo "$idx" "$PATH_PART"
+              echo "$idx" "${PATH_PARTS[idx]}"
 
-              if ! [   "$PATH_PATH" = " "  ];
+              if ! [   "$${PATH_PARTS[idx]}" = ""  ];
               then 
-                INSTALL_FOLDER+="/$PATH_PATH"
+                INSTALL_FOLDER+="/${PATH_PARTS[idx]}"
                 echo "$INSTALL_FOLDER"
               fi
           done
