@@ -27,9 +27,8 @@ jobs:
         run: |
           echo 'Workspace: $GITHUB_WORKSPACE'
           IFS='/'
-          read -a strarr <<< "$GITHUB_WORKSPACE"
-          echo "There are ${#strarr[*]} words in the text."
-          for val in "${strarr[@]}";
-          do
-            printf "$val\n"
+          read -a path_parts <<< "$GITHUB_WORKSPACE"
+          echo "There are ${#path_parts[*]} words in the text."
+          for ((idx=0; idx<${#path_parts[@]}-1; ++idx)); do
+              echo "$idx" "${path_parts[idx]}"
           done
