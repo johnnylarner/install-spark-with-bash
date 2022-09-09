@@ -122,7 +122,7 @@ jobs:
       #     echo "$PATH" >> "$GITHUB_ENV"
 
 
-      # - name: Test Spark Installation
-      #   run: | 
-      #     echo "$SPARK_HOME"
-      #     spark-submit --version
+      - name: Test Spark Installation
+        run: | 
+          echo "$SPARK_HOME"
+          spark-submit --version
