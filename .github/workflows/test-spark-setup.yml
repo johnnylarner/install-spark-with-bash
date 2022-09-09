@@ -94,6 +94,8 @@ jobs:
           echo "Installation completed at: $INSTALL_PATH" ||
           echo "Installation failed."
 
+          cd /etc/
+          ls .
           echo "Setting up environment variables"
           export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
           export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"
@@ -104,9 +106,9 @@ jobs:
           export APACHE_SPARK_VERSION="$SPARK_VERSION"
           export PATH="$SPARK_HOME/bin:$PATH"
 
-          spark-submit --version
+          # spark-submit --version
 
-      - name: Test Spark Installation
-        run: | 
-          echo "$SPARK_HOME"
-          spark-submit --version
+      # - name: Test Spark Installation
+      #   run: | 
+      #     echo "$SPARK_HOME"
+      #     spark-submit --version
