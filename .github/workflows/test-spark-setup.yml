@@ -27,8 +27,11 @@ jobs:
         run: |
           echo 'Workspace: $GITHUB_WORKSPACE'
           IFS='/'
-          read -a path_parts <<< "$GITHUB_WORKSPACE"
-          echo "There are ${#path_parts[*]} words in the text."
-          for ((idx=0; idx<${#path_parts[@]}-1; ++idx)); do
-              echo "$idx" "${path_parts[idx]}"
+          read -a PATH_PARTS <<< "$GITHUB_WORKSPACE"
+          echo "There are ${#PATH_PARTS[*]} words in the text."
+          INSTALL_FOLDER=''
+          for ((idx=0; idx<${#PATH_PARTS[@]}-1; ++idx)); do
+              echo "$idx" "${PATH_PARTS[idx]}"
+              INSTALL_FOLDER+=${PATH_PARTS[idx]}
+              echo "$INSTALL_FOLDER"
           done
