@@ -27,6 +27,6 @@ jobs:
         run: |
           echo 'Workspace: $GITHUB_WORKSPACE'
           IFS=';' && PATH_PARTS=($GIT_HUBWORKSPACE)
-          echo "${Array[@]}" 
-          echo "${Array[0]}" 
-          echo "${Array[1]}" 
+          echo "${PATH_PARTS[@]}" 
+          echo "${PATH_PARTS[0]}" 
+          echo "${PATH_PARTS[1]}" 
