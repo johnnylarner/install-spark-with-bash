@@ -94,20 +94,7 @@ jobs:
           echo "Installation completed at: $INSTALL_PATH" ||
           echo "Installation failed."
 
-          echo "Setting up environment variables"
-          export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
-          export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"
-          export PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip" 
-          export PYSPARK_PYTHON="python"
-          export PYSPARK_DRIVER_PYTHON="python"
-          export HADOOP_VERSION="$HADOOP_VERSION"
-          export APACHE_SPARK_VERSION="$SPARK_VERSION"
-          export PATH="$SPARK_HOME/bin:$PATH"  
-
-          spark-submit --version
-
-          # Test this with $GITHUV_ENV, spark-submit command not working atm.
-
+          echo "Setting up environment variables for future steps"
           echo SPARK_HOME="$INSTALL_ROOT_FOLDER/spark" >> "$GITHUB_ENV"
           echo SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"  >> "$GITHUB_ENV"
           echo PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"  >> "$GITHUB_ENV"
@@ -117,11 +104,7 @@ jobs:
           echo APACHE_SPARK_VERSION="$SPARK_VERSION"  >> "$GITHUB_ENV"
           echo "$SPARK_HOME/bin" >> "$GITHUB_PATH"
 
-      #     # This isn't working yet.
-      #     echo "Path: $PATH"
-      #     echo "$PATH" >> "$GITHUB_ENV"
-
-
+      # Test installation by adding a symlink
       - name: Test Spark Installation
         run: | 
           echo "$SPARK_HOME"
