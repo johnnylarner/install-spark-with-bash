@@ -95,20 +95,38 @@ jobs:
           echo "Installation failed."
 
           echo "Setting up environment variables"
-          echo SPARK_HOME="$INSTALL_ROOT_FOLDER/spark" >> "$GITHUB_ENV"
-          echo SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"  >> "$GITHUB_ENV"
-          echo PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"  >> "$GITHUB_ENV"
-          echo PYSPARK_PYTHON="python"  >> "$GITHUB_ENV"
-          echo PYSPARK_DRIVER_PYTHON="python"  >> "$GITHUB_ENV"
-          echo HADOOP_VERSION="$HADOOP_VERSION"  >> "$GITHUB_ENV"
-          echo APACHE_SPARK_VERSION="$SPARK_VERSION"  >> "$GITHUB_ENV"
+          export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
+          export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"
+          export PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip" 
+          export PYSPARK_PYTHON="python"
+          export PYSPARK_DRIVER_PYTHON="python"
+          export HADOOP_VERSION="$HADOOP_VERSION"
+          export APACHE_SPARK_VERSION="$SPARK_VERSION"
           export PATH="$SPARK_HOME/bin:$PATH"  
-          echo "Path: $PATH"
+
           spark-submit --version
-          echo "$PATH" >> "$GITHUB_ENV"
 
 
-      - name: Test Spark Installation
-        run: | 
-          echo "$SPARK_HOME"
-          spark-submit --version
+
+
+
+
+
+      #     echo SPARK_HOME="$INSTALL_ROOT_FOLDER/spark" >> "$GITHUB_ENV"
+      #     echo SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"  >> "$GITHUB_ENV"
+      #     echo PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"  >> "$GITHUB_ENV"
+      #     echo PYSPARK_PYTHON="python"  >> "$GITHUB_ENV"
+      #     echo PYSPARK_DRIVER_PYTHON="python"  >> "$GITHUB_ENV"
+      #     echo HADOOP_VERSION="$HADOOP_VERSION"  >> "$GITHUB_ENV"
+      #     echo APACHE_SPARK_VERSION="$SPARK_VERSION"  >> "$GITHUB_ENV"
+
+      #     # This isn't working yet.
+      #     # echo PATH="$SPARK_HOME/bin:$PATH"  
+      #     echo "Path: $PATH"
+      #     echo "$PATH" >> "$GITHUB_ENV"
+
+
+      # - name: Test Spark Installation
+      #   run: | 
+      #     echo "$SPARK_HOME"
+      #     spark-submit --version
