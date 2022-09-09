@@ -81,6 +81,7 @@ jobs:
             echo "Following install path located in runner:\n $INSTALL_PATH"
             echo "Deleting..."
             rm -rf "$INSTALL_PATH"
+          fi
 
 
 
