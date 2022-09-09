@@ -106,11 +106,7 @@ jobs:
 
           spark-submit --version
 
-
-
-
-
-
+          # Test this with $GITHUV_ENV, spark-submit command not working atm.
 
       #     echo SPARK_HOME="$INSTALL_ROOT_FOLDER/spark" >> "$GITHUB_ENV"
       #     echo SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"  >> "$GITHUB_ENV"
