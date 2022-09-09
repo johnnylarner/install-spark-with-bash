@@ -31,7 +31,12 @@ jobs:
           echo "There are ${#PATH_PARTS[*]} words in the text."
           INSTALL_FOLDER=''
           for ((idx=0; idx<${#PATH_PARTS[@]}-1; ++idx)); do
+              PATH_PART="${PATH_PARTS[idx]}"
               echo "$idx" "${PATH_PARTS[idx]}"
-              INSTALL_FOLDER+="/${PATH_PARTS[idx]}"
-              echo "$INSTALL_FOLDER"
+
+              if [[ $PATH_PATH ]] 
+              then 
+                INSTALL_FOLDER+="/${PATH_PARTS[idx]}"
+                echo "$INSTALL_FOLDER"
+              fi
           done
