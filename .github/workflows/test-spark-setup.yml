@@ -115,7 +115,7 @@ jobs:
           echo PYSPARK_DRIVER_PYTHON="python"  >> "$GITHUB_ENV"
           echo HADOOP_VERSION="$HADOOP_VERSION"  >> "$GITHUB_ENV"
           echo APACHE_SPARK_VERSION="$SPARK_VERSION"  >> "$GITHUB_ENV"
-          echo "$SPARK_HOME/bin" >> $GITHUB_PATH
+          echo "$SPARK_HOME/bin" >> "$GITHUB_PATH"
 
       #     # This isn't working yet.
       #     echo "Path: $PATH"
