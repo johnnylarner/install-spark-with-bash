@@ -27,13 +27,13 @@ jobs:
         run: |
           # Debug
           
-          SPARK_VERSION = "3.2.1"
+          SPARK_VERSION="3.2.1"
           echo "Spark Version: $SPARK_VERSION"
-          HADOOP_VERSION = "3.2"
+          HADOOP_VERSION="3.2"
           echo "Hadoop Version: $HADOOP_VERSION"
-          SCALA_VERSION = ""
+          SCALA_VERSION=""
           echo "Scala Version: $SCALA_VERSION"
-          SPARK_URL = "https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION$SCALA_VERSION.tgz"
+          SPARK_URL="https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION$SCALA_VERSION.tgz"
           echo "Spark download URL: $SPARK_URL"
 
           echo "Workspace: $GITHUB_WORKSPACE"
