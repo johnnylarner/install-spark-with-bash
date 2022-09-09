@@ -108,16 +108,16 @@ jobs:
 
           # Test this with $GITHUV_ENV, spark-submit command not working atm.
 
-      #     echo SPARK_HOME="$INSTALL_ROOT_FOLDER/spark" >> "$GITHUB_ENV"
-      #     echo SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"  >> "$GITHUB_ENV"
-      #     echo PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"  >> "$GITHUB_ENV"
-      #     echo PYSPARK_PYTHON="python"  >> "$GITHUB_ENV"
-      #     echo PYSPARK_DRIVER_PYTHON="python"  >> "$GITHUB_ENV"
-      #     echo HADOOP_VERSION="$HADOOP_VERSION"  >> "$GITHUB_ENV"
-      #     echo APACHE_SPARK_VERSION="$SPARK_VERSION"  >> "$GITHUB_ENV"
+          echo SPARK_HOME="$INSTALL_ROOT_FOLDER/spark" >> "$GITHUB_ENV"
+          echo SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"  >> "$GITHUB_ENV"
+          echo PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"  >> "$GITHUB_ENV"
+          echo PYSPARK_PYTHON="python"  >> "$GITHUB_ENV"
+          echo PYSPARK_DRIVER_PYTHON="python"  >> "$GITHUB_ENV"
+          echo HADOOP_VERSION="$HADOOP_VERSION"  >> "$GITHUB_ENV"
+          echo APACHE_SPARK_VERSION="$SPARK_VERSION"  >> "$GITHUB_ENV"
+          echo "$SPARK_HOME/bin" >> $GITHUB_PATH
 
       #     # This isn't working yet.
-      #     # echo PATH="$SPARK_HOME/bin:$PATH"  
       #     echo "Path: $PATH"
       #     echo "$PATH" >> "$GITHUB_ENV"
 
