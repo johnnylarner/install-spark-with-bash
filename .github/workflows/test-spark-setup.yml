@@ -1,0 +1,24 @@
+name: Test Spark Setup
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-spark-setup:
+    name: Test spark setup
+    runs-on: 'ubuntu-latest'
+
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Check Python install
+      runs: |
+        PY_VERSION=$(python3 --version)
+        echo $PY_VERSION
+
+    - name: Check Java install
+      runs: |
+        JAR_VERSION=$(java -version)
+        echo $JAR_VERSION
