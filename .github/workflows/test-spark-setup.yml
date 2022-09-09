@@ -26,7 +26,7 @@ jobs:
       - name: Install spark
         run: |
           echo 'Workspace: $GITHUB_WORKSPACE'
-          IFS=';' && PATH_PARTS=($GIT_HUBWORKSPACE)
+          IFS=';' && PATH_PARTS=($GITHUB_WORKSPACE)
           echo "${PATH_PARTS[@]}" 
           echo "${PATH_PARTS[0]}" 
           echo "${PATH_PARTS[1]}" 
