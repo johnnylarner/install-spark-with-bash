@@ -105,4 +105,6 @@ jobs:
           export PATH="$SPARK_HOME/bin:$PATH"
 
       - name: Test Spark Installation
-        run: spark-submit --version
+        run: | 
+          echo "$SPARK_HOME"
+          spark-submit --version
