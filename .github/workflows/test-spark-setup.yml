@@ -102,9 +102,9 @@ jobs:
           echo PYSPARK_DRIVER_PYTHON="python"  >> "$GITHUB_ENV"
           echo HADOOP_VERSION="$HADOOP_VERSION"  >> "$GITHUB_ENV"
           echo APACHE_SPARK_VERSION="$SPARK_VERSION"  >> "$GITHUB_ENV"
-          echo PATH="$SPARK_HOME/bin:$PATH"  >> "$GITHUB_ENV"
-
-          # spark-submit --version
+          PATH="$SPARK_HOME/bin:$PATH"  
+          echo "Path: $PATH"
+          echo "$PATH" >> "$GITHUB_ENV"
 
       - name: Test Spark Installation
         run: | 
