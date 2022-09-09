@@ -25,18 +25,19 @@ jobs:
 
       - name: Install spark
         run: |
-          # Debug
-          
+  
+          # Declare and print ENV VARS
           SPARK_VERSION="3.2.1"
           echo "Spark Version: $SPARK_VERSION"
           HADOOP_VERSION="3.2"
           echo "Hadoop Version: $HADOOP_VERSION"
           SCALA_VERSION=""
           echo "Scala Version: $SCALA_VERSION"
+          PY4J_VERSION = "0.10.9"
+          echo "Py4j Version: $PY4J_VERSION"
           INSTALL_SLUG="spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION$SCALA_VERSION"
           SPARK_URL="https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/$INSTALL_SLUG.tgz"
           echo "Spark download URL: $SPARK_URL"
-
           echo "Workspace: $GITHUB_WORKSPACE"
           
           # Split string and insert into array
@@ -83,7 +84,8 @@ jobs:
           else
             echo "No path found continuing with install"
           fi
-
+          
+          echo "Downloading..."
           cd /tmp &&
           wget -q -O spark.tgz "$SPARK_URL" &&
           tar xzf spark.tgz -C "$INSTALL_ROOT_FOLDER" &&
@@ -92,5 +94,12 @@ jobs:
           echo "Installation completed at: $INSTALL_PATH" ||
           echo "Installation failed."
 
-      - name: Test installation succeeded
-        run: spark-submit --version
+          echo "Setting up environment variables"
+          export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
+          export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"
+          export PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"
+          export PYSPARK_PYTHON="python"
+          export PYSPARK_DRIVER_PYTHON="python"
+          export HADOOP_VERSION="$HADOOP_VERSION"
+          export APACHE_SPARK_VERSION="$SPARK_VERSION"
+          export PATH="$SPARK_HOME/bin:$PATH"
