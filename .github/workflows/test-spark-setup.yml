@@ -26,7 +26,7 @@ jobs:
       - name: Install spark
         run: |
           # Debug
-          echo 'Workspace: $GITHUB_WORKSPACE'
+          echo "Workspace: "$GITHUB_WORKSPACE"
           
           # Split string and insert into array
           IFS='/'
