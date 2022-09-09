@@ -26,7 +26,10 @@ jobs:
       - name: Install spark
         run: |
           echo 'Workspace: $GITHUB_WORKSPACE'
-          IFS='/' && PATH_PARTS=($GITHUB_WORKSPACE)
-          echo "${PATH_PARTS}" 
-          echo "${PATH_PARTS[0]}" 
-          echo "${PATH_PARTS[1]}" 
+          IFS='/'
+          read -a strarr <<< "$GITHUB_WORKSPACE"
+          echo "There are ${#strarr[*]} words in the text."
+          for val in "${strarr[@]}";
+          do
+            printf "$val\n"
+          done
