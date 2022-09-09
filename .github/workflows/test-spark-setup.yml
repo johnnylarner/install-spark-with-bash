@@ -74,13 +74,13 @@ jobs:
           echo "Final install root folder: $INSTALL_ROOT_FOLDER"
 
           INSTALL_PATH="$INSTALL_ROOT_FOLDER/$INSTALL_SLUG"
-          echo "Checking if full install path exits"
+          echo Checking if full install path exits
           mkdir "$INSTALL_PATH"
           if [ -d "$INSTALL_PATH" ];
           then
             echo "Following install path located in runner:\n $INSTALL_PATH"
             echo "Deleting..."
-            rm -rf "INSTALL_PATH"
+            rm -rf "$INSTALL_PATH"
 
 
 
