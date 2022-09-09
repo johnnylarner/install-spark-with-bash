@@ -25,4 +25,4 @@ jobs:
 
       - name: Install spark
         run: |
-          echo $GITHUB_WORKSPACE
+          echo "Workspace: $GITHUB_WORKSPACE"
