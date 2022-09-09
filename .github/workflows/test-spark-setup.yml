@@ -49,6 +49,6 @@ jobs:
           done
           echo "Proposed install folder: $INSTALL_FOLDER"
           # Check if proposed folder is writable
-          if ! [ -w "$INSTALL_FOLDER" ]; then echo "Not writable"
+          echo "Not writable"
 
 
