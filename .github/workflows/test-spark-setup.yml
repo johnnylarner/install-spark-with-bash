@@ -109,4 +109,4 @@ jobs:
       - name: Test Spark Installation
         run: | 
           echo "$SPARK_HOME"
-      #     spark-submit --version
+          spark-submit --version
