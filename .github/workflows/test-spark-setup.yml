@@ -49,6 +49,6 @@ jobs:
           done
           echo "Proposed install folder: $INSTALL_FOLDER"
           # Check if proposed folder is writable
-          ls -l $INSTALL_FOLDER
+          ls -l "$INSTALL_FOLDER"
 
 
