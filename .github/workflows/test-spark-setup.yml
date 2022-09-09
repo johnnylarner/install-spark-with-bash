@@ -25,18 +25,30 @@ jobs:
 
       - name: Install spark
         run: |
+          # Debug
           echo 'Workspace: $GITHUB_WORKSPACE'
+          
+          # Split string and insert into array
           IFS='/'
           read -a PATH_PARTS <<< "$GITHUB_WORKSPACE"
-          echo "There are ${#PATH_PARTS[*]} words in the text."
+
+          # Iterate thru array and recreate path
+          # Ignore last path part and empty strings
           INSTALL_FOLDER=''
           for ((idx=0; idx<${#PATH_PARTS[@]}-1; ++idx)); do
-              PATH_PART="${PATH_PARTS[idx]}"
+              # Debug
               echo "$idx" "${PATH_PARTS[idx]}"
 
+              # Concat string
               if ! [   "${PATH_PARTS[idx]}" = ""  ];
               then 
                 INSTALL_FOLDER+="/${PATH_PARTS[idx]}"
+                # Debug
                 echo "$INSTALL_FOLDER"
               fi
           done
+          echo "Proposed install folder: $INSTALL_FOLDER"
+          # Check if proposed folder is writable
+          if [ -w $INSTALL_FOLDER ]; then echo "Writable"
+
+
