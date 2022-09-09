@@ -96,15 +96,16 @@ jobs:
 
           cd /etc/
           ls .
+
           echo "Setting up environment variables"
-          export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
-          export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"
-          export PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"
-          export PYSPARK_PYTHON="python"
-          export PYSPARK_DRIVER_PYTHON="python"
-          export HADOOP_VERSION="$HADOOP_VERSION"
-          export APACHE_SPARK_VERSION="$SPARK_VERSION"
-          export PATH="$SPARK_HOME/bin:$PATH"
+          echo export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark" >> /etc/profile
+          echo export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"  >> /etc/profile
+          echo export PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"  >> /etc/profile
+          echo export PYSPARK_PYTHON="python"  >> /etc/profile
+          echo export PYSPARK_DRIVER_PYTHON="python"  >> /etc/profile
+          echo export HADOOP_VERSION="$HADOOP_VERSION"  >> /etc/profile
+          echo export APACHE_SPARK_VERSION="$SPARK_VERSION"  >> /etc/profile
+          echo export PATH="$SPARK_HOME/bin:$PATH"  >> /etc/profile
 
           # spark-submit --version
 
