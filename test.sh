@@ -1,32 +1,4 @@
-name: Test Spark Setup
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  test-spark-setup:
-    name: Test spark setup
-    runs-on: 'ubuntu-latest'
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@main
-
-      - name: Check Python install
-        run: |
-          PY_VERSION=$(python3 --version)
-          echo $PY_VERSION
-
-      - name: Check Java install
-        run: |
-          JAR_VERSION=$(java -version)
-          echo $JAR_VERSION
-
-      - name: Install spark
-        run: |
-  
-          # Declare and print ENV VARS
+# Declare and print ENV VARS
           SPARK_VERSION="3.2.1"
           echo "Spark Version: $SPARK_VERSION"
           HADOOP_VERSION="3.2"
@@ -103,6 +75,3 @@ jobs:
           export HADOOP_VERSION="$HADOOP_VERSION"
           export APACHE_SPARK_VERSION="$SPARK_VERSION"
           export PATH="$SPARK_HOME/bin:$PATH"
-
-      - name: Test Spark Installation
-        run: spark-submit --version
