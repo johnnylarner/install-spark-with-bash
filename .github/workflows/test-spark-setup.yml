@@ -80,7 +80,17 @@ jobs:
             echo "Following install path located in runner: $INSTALL_PATH"
             echo "Deleting..."
             rm -rf "$INSTALL_PATH"
+          else
+            echo "No path found continuing with install"
           fi
+
+          cd /tmp &&
+          wget -q -O spark.tgz "$SPARK_URL" &&
+          tar xzf spark.tgz -C "$INSTALL_ROOT_FOLDER" &&
+          rm spark.tgz &&
+          ln -sf "$INSTALL_PATH" "$INSTALL_ROOT_FOLDER/spark" &&
+          echo "Installation completed at: $INSTALL_PATH" ||
+          echo "Installation failed."
 
 
 
