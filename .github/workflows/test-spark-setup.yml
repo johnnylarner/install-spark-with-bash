@@ -1,3 +1,32 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@johnnylarner 
+johnnylarner
+/
+install-spark-with-bash
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+test path Test Spark Setup #69
+Summary
+Usage
+Workflow file
+Jobs
+Test spark setup
+Workflow file for this run
+.github/workflows/test-spark-setup.yml at 8bc1d4f
 name: Test Spark Setup
 on:
   push:
@@ -17,12 +46,10 @@ jobs:
         run: |
           PY_VERSION=$(python3 --version)
           echo $PY_VERSION
-
       - name: Check Java install
         run: |
           JAR_VERSION=$(java -version)
           echo $JAR_VERSION
-
       - name: Install spark
         run: |
   
@@ -75,18 +102,6 @@ jobs:
           echo "Final install root folder: $INSTALL_ROOT_FOLDER"
 
           INSTALL_PATH="$INSTALL_ROOT_FOLDER/$INSTALL_SLUG"
-
-          ########
-          # echo "Downloading..."
-          # cd /tmp &&
-          # wget -q -O spark.tgz "$SPARK_URL" &&
-          # tar xzf spark.tgz -C "$INSTALL_ROOT_FOLDER" &&
-          # rm spark.tgz &&
-          # ln -sf "$INSTALL_PATH" "$INSTALL_ROOT_FOLDER/spark" &&
-          # echo "Installation completed at: $INSTALL_PATH" ||
-          # echo "Installation failed."
-          #########
-
           echo Checking if full install path exits
           if [ -d "$INSTALL_PATH" ];
           then
@@ -106,7 +121,20 @@ jobs:
           echo "Installation completed at: $INSTALL_PATH" ||
           echo "Installation failed."
 
-          echo "Setting up environment variables for future steps"
+          echo "Setting up environment variables"
+          export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
+          export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"
+          export PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip" 
+          export PYSPARK_PYTHON="python"
+          export PYSPARK_DRIVER_PYTHON="python"
+          export HADOOP_VERSION="$HADOOP_VERSION"
+          export APACHE_SPARK_VERSION="$SPARK_VERSION"
+          export PATH="$SPARK_HOME/bin:$PATH"  
+
+          spark-submit --version
+
+          # Test this with $GITHUV_ENV, spark-submit command not working atm.
+
           echo SPARK_HOME="$INSTALL_ROOT_FOLDER/spark" >> "$GITHUB_ENV"
           echo SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"  >> "$GITHUB_ENV"
           echo PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"  >> "$GITHUB_ENV"
@@ -116,9 +144,12 @@ jobs:
           echo APACHE_SPARK_VERSION="$SPARK_VERSION"  >> "$GITHUB_ENV"
           echo "$SPARK_HOME/bin" >> "$GITHUB_PATH"
 
-      # Test installation by adding a symlink
+      #     # This isn't working yet.
+      #     echo "Path: $PATH"
+      #     echo "$PATH" >> "$GITHUB_ENV"
+
+
       - name: Test Spark Installation
         run: | 
           echo "$SPARK_HOME"
-          echo "$GITHUB_PATH"
           spark-submit --version
