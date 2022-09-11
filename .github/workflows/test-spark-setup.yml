@@ -71,20 +71,7 @@ jobs:
           
           # Debug
           echo "Final install root folder: $INSTALL_ROOT_FOLDER"
-
           INSTALL_PATH="$INSTALL_ROOT_FOLDER/$INSTALL_SLUG"
-
-          #########
-            echo "Downloading..."
-          cd /tmp &&
-          wget -q -O spark.tgz "$SPARK_URL" &&
-          tar xzf spark.tgz -C "$INSTALL_ROOT_FOLDER" &&
-          rm spark.tgz &&
-          ln -sf "$INSTALL_PATH" "$INSTALL_ROOT_FOLDER/spark" &&
-          echo "Installation completed at: $INSTALL_PATH" ||
-          echo "Installation failed."
-          #########
-
 
           echo Checking if full install path exits
           if [ -d "$INSTALL_PATH" ];
