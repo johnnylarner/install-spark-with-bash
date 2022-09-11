@@ -93,16 +93,16 @@ jobs:
           echo "Installation failed."
 
           echo "Setting up environment variables"
-          export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
-          export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"
-          export PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip" 
-          export PYSPARK_PYTHON="python"
-          export PYSPARK_DRIVER_PYTHON="python"
-          export HADOOP_VERSION="$HADOOP_VERSION"
-          export APACHE_SPARK_VERSION="$SPARK_VERSION"
-          export PATH="$SPARK_HOME/bin:$PATH"  
+          # export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
+          # export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"
+          # export PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip" 
+          # export PYSPARK_PYTHON="python"
+          # export PYSPARK_DRIVER_PYTHON="python"
+          # export HADOOP_VERSION="$HADOOP_VERSION"
+          # export APACHE_SPARK_VERSION="$SPARK_VERSION"
+          # export PATH="$SPARK_HOME/bin:$PATH"  
 
-          spark-submit --version
+          # spark-submit --version
 
           # Test this with $GITHUV_ENV, spark-submit command not working atm.
 
