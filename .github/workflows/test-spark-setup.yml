@@ -75,7 +75,7 @@ jobs:
           echo "Final install root folder: $INSTALL_ROOT_FOLDER"
 
           INSTALL_PATH="$INSTALL_ROOT_FOLDER/$INSTALL_SLUG"
-          
+
           ########
           echo "Downloading..."
           cd /tmp &&
@@ -120,4 +120,5 @@ jobs:
       - name: Test Spark Installation
         run: | 
           echo "$SPARK_HOME"
+          echo "$GITHUB_PATH"
           spark-submit --version
