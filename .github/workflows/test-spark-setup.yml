@@ -93,7 +93,6 @@ jobs:
           echo "Installation failed."
 
           echo "Setting up environment variables"
-          # export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
           # export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"
           # export PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip" 
           # export PYSPARK_PYTHON="python"
@@ -106,6 +105,7 @@ jobs:
 
           # Test this with $GITHUV_ENV, spark-submit command not working atm.
 
+          export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
           echo SPARK_HOME="$INSTALL_ROOT_FOLDER/spark" >> "$GITHUB_ENV"
           echo SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"  >> "$GITHUB_ENV"
           echo PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"  >> "$GITHUB_ENV"
