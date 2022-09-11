@@ -1,32 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@johnnylarner 
-johnnylarner
-/
-install-spark-with-bash
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-test path Test Spark Setup #69
-Summary
-Usage
-Workflow file
-Jobs
-Test spark setup
-Workflow file for this run
-.github/workflows/test-spark-setup.yml at 8bc1d4f
 name: Test Spark Setup
 on:
   push:
