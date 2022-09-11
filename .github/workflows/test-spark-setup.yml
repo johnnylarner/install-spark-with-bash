@@ -115,7 +115,6 @@ jobs:
           echo HADOOP_VERSION="$HADOOP_VERSION"  >> "$GITHUB_ENV"
           echo APACHE_SPARK_VERSION="$SPARK_VERSION"  >> "$GITHUB_ENV"
           echo "$SPARK_HOME/bin" >> "$GITHUB_PATH"
-          spark-submit --version
 
       # Test installation by adding a symlink
       - name: Test Spark Installation
