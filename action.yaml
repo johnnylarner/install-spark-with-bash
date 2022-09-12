@@ -12,5 +12,5 @@ inputs:
     default: "0.10.9"
 
 runs:
-  using: bash 
+  using: composite 
   main: ./.github/workflows/setup-spark.sh
