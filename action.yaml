@@ -1,16 +1,16 @@
 name: Setup apache spark
 description: "Download and install Apache spark based versioned according to variables"
 inputs:
-    spark-version: 
-      required: true
-    hadoop-version:
-      required: true
-    py4j-version: 
-      required: false
-      default: "0.10.9"
-    scala-version: 
-      required: false
-      default: ""
+  spark-version: 
+    required: true
+  hadoop-version:
+    required: true
+  py4j-version: 
+    required: false
+    default: "0.10.9"
+  scala-version: 
+    required: false
+    default: ""
 
 runs:
   using: composite
@@ -24,8 +24,8 @@ runs:
           ${{ inputs.scala-version }} \
 
     - name: Test Spark Installation
-        run: | 
-          echo "$SPARK_HOME"
-          spark-submit --version
+      run: | 
+        echo "$SPARK_HOME"
+        spark-submit --version
 
     
