@@ -17,11 +17,11 @@ runs:
   steps:
     - name: Setup apache spark
       run: |
-      bash ./.github/workflows/setup-spark.sh \ 
-        ${{ inputs.spark-version }} \
-        ${{ inputs.hadoop-version }} \
-        ${{ inputs.py4j-version }} \
-        ${{ inputs.scala-version }} \
+        bash ./.github/workflows/setup-spark.sh \ 
+          ${{ inputs.spark-version }} \
+          ${{ inputs.hadoop-version }} \
+          ${{ inputs.py4j-version }} \
+          ${{ inputs.scala-version }} \
 
     - name: Test Spark Installation
         run: | 
