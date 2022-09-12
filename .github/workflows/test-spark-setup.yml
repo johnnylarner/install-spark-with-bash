@@ -8,8 +8,8 @@ jobs:
     name: Test spark setup
     runs-on: 'ubuntu-latest'
     env:
-      spark-version: "99999999"
-      hadoop-version: "11111111"
+      spark-version: "3.2.1"
+      hadoop-version: "3.2"
       scala-version: ""
       py4j-version: "0.10.9"
 
