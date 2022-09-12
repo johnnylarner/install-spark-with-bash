@@ -7,6 +7,9 @@ jobs:
   test-spark-setup:
     name: Test spark setup
     runs-on: 'ubuntu-latest'
+    env:
+      spark-version: '99999999'
+      hadoop-version: '11111111'
 
     steps:
       - name: Checkout
@@ -33,10 +36,10 @@ jobs:
         #     required: false
         #     default: "0.10.9"
 
-        uses: ./
-        with:
-          spark-version: "9999999"
-          hadoop-version: "11111111"
+        run: bash ./.github/workflows/setup-spark.sh ${{ env.spark-version }} ${{ env.hadoop-version }}
+        # with:
+        #   spark-version: "9999999"
+        #   hadoop-version: "11111111"
 
   
       - name: Test Spark Installation
