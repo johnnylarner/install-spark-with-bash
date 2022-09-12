@@ -1,4 +1,9 @@
- # Declare and print ENV VARS
+#!/bin/sh -l
+
+echo "My new spark version: $1"
+echo "My new hadoop version: $2"
+
+# Declare and print ENV VARS
 SPARK_VERSION="3.2.1"
 echo "Spark Version: $SPARK_VERSION"
 HADOOP_VERSION="3.2"

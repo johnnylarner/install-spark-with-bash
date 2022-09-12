@@ -21,7 +21,23 @@ jobs:
           JAR_VERSION=$(java -version)
           echo $JAR_VERSION
       - name: Install spark
+        inputs:
+          spark-version:
+            required: true
+          hadoop-version:
+            required: true
+          scala-version:
+            required: false
+            default: ""
+          py4j-version:
+            required: false
+            default: "0.10.9"
+
         run: bash ./.github/workflows/setup-spark.sh
+        with:
+          spark-version: "9999999"
+          hadoop-version: "11111111"
+
   
       - name: Test Spark Installation
         run: | 
