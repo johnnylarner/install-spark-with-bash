@@ -15,10 +15,6 @@ inputs:
 runs:
   using: composite
   steps:
-    # - name: Test inputs
-    #   shell: bash
-    #   run: |
-    #     echo ${{ inputs.spark-version }}
     - name: Setup apache spark
       shell: bash
       run: |
