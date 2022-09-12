@@ -1,16 +1,25 @@
-name: Install spark
+name: Setup apache spark
+description: "Download and install Apache spark based versioned according to variables"
 inputs:
-  spark-version:
-    required: true
-  hadoop-version:
-    required: true
-  scala-version:
-    required: false
-    default: ""
-  py4j-version:
-    required: false
-    default: "0.10.9"
+    spark-version: 
+      required: true
+    hadoop-version: "3.2"
+      required: true
+    py4j-version: 
+      required: false
+      default: "0.10.9"
+    scala-version: 
+      required: false
+      default: ""
+
 
 runs:
-  using: composite 
-  main: ./.github/workflows/setup-spark.sh
+  using: composite
+  steps:
+    name: Setup apache spark
+    run: |
+      bash ./.github/workflows/setup-spark.sh \ 
+        ${{ inputs.spark-version }} \
+        ${{ inputs.hadoop-version }} \
+        ${{ inputs.py4j-version }} \
+        ${{ inputs.scala-version }} \
