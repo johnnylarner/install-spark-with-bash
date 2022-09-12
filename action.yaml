@@ -18,7 +18,7 @@ runs:
     - name: Setup apache spark
       shell: bash
       run: |
-        ./.github/workflows/setup-spark.sh \ 
+        bash ./.github/workflows/setup-spark.sh \ 
           ${{ inputs.spark-version }} \
           ${{ inputs.hadoop-version }} \
           ${{ inputs.py4j-version }} \
