@@ -10,8 +10,8 @@ jobs:
     env:
       spark-version: "3.2.1"
       hadoop-version: "3.2"
-      scala-version: ""
       py4j-version: "0.10.9"
+      scala-version: ""
 
     steps:
       - name: Checkout
@@ -42,8 +42,8 @@ jobs:
           bash ./.github/workflows/setup-spark.sh \
             ${{ env.spark-version }} \
             ${{ env.hadoop-version }} \
-            ${{ env.scala-version }} \
             ${{ env.py4j-version }} \
+            ${{ env.scala-version }} \
         
         # with:
         #   spark-version: "9999999"
