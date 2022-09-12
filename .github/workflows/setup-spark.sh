@@ -69,7 +69,7 @@ tar xzf spark.tgz -C "$INSTALL_ROOT_FOLDER" &&
 rm spark.tgz &&
 ln -sf "$INSTALL_PATH" "$INSTALL_ROOT_FOLDER/spark" &&
 echo "Installation completed at: $INSTALL_PATH" ||
-echo "Installation failed."
+echo "Installation failed. Please check debug output" && exit 1
 
 echo "Setting up environment variables"
 SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
