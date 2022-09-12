@@ -40,7 +40,7 @@ jobs:
 
         run: |
           bash ./.github/workflows/setup-spark.sh \
-            ${{ env.spark-version }} \
+            --spark-version=${{ env.spark-version }} \
             ${{ env.hadoop-version }} \
             ${{ env.scala-version }} \
             ${{ env.py4j-version }} \
