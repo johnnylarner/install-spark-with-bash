@@ -29,5 +29,3 @@ runs:
       run: | 
         echo "$SPARK_HOME"
         spark-submit --version
-
-    
