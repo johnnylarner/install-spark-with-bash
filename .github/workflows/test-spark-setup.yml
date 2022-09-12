@@ -21,7 +21,7 @@ jobs:
           JAR_VERSION=$(java -version)
           echo $JAR_VERSION
       - name: Install spark
-        run: ./setup-spark.sh
+        run: ./.github/workflows/setup-spark.sh
   
       - name: Test Spark Installation
         run: | 
