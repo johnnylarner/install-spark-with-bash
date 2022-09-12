@@ -25,32 +25,11 @@ jobs:
         run: |
           JAR_VERSION=$(java -version)
           echo $JAR_VERSION
-      - name: Install spark
-        # inputs:
-        #   spark-version:
-        #     required: true
-        #   hadoop-version:
-        #     required: true
-        #   scala-version:
-        #     required: false
-        #     default: ""
-        #   py4j-version:
-        #     required: false
-        #     default: "0.10.9"
-
-        run: |
-          bash ./.github/workflows/setup-spark.sh \
-            ${{ env.spark-version }} \
-            ${{ env.hadoop-version }} \
-            ${{ env.py4j-version }} \
-            ${{ env.scala-version }} \
-        
-        # with:
-        #   spark-version: "9999999"
-        #   hadoop-version: "11111111"
-
+      - name: Setup Apache spark
+        uses: ./
+        with:
+          spark-version: "3.2.1"
+          hadoop-version: "3.2"
+          py4j-version: "0.10.9"
+          scala-version: ""
   
-      - name: Test Spark Installation
-        run: | 
-          echo "$SPARK_HOME"
-          spark-submit --version

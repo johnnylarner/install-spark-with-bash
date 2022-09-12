@@ -12,14 +12,20 @@ inputs:
       required: false
       default: ""
 
-
 runs:
   using: composite
   steps:
-    name: Setup apache spark
-    run: |
+    - name: Setup apache spark
+      run: |
       bash ./.github/workflows/setup-spark.sh \ 
         ${{ inputs.spark-version }} \
         ${{ inputs.hadoop-version }} \
         ${{ inputs.py4j-version }} \
         ${{ inputs.scala-version }} \
+
+    - name: Test Spark Installation
+        run: | 
+          echo "$SPARK_HOME"
+          spark-submit --version
+
+    
