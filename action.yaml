@@ -3,7 +3,7 @@ description: "Download and install Apache spark based versioned according to var
 inputs:
     spark-version: 
       required: true
-    hadoop-version: "3.2"
+    hadoop-version:
       required: true
     py4j-version: 
       required: false
