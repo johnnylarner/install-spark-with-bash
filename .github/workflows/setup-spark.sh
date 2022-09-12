@@ -19,9 +19,6 @@ read -a PATH_PARTS <<< "$GITHUB_WORKSPACE"
 # Ignore last path part and empty strings
 INSTALL_ROOT_FOLDER=''
 for ((idx=0; idx<${#PATH_PARTS[@]}-1; ++idx)); do
-    # Debug
-    echo "$idx" "${PATH_PARTS[idx]}"
-
     # Concat string
     if ! [   "${PATH_PARTS[idx]}" = ""  ];
     then 
