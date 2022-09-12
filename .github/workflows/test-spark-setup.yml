@@ -39,12 +39,12 @@ jobs:
         #     default: "0.10.9"
 
         run: |
-        ( bash ./.github/workflows/setup-spark.sh 
-          ${{ env.spark-version }} 
-          ${{ env.hadoop-version }}
-          ${{ env.scala-version }} 
-          ${{ env.py4j-version }}
-        )
+          bash ./.github/workflows/setup-spark.sh \
+            ${{ env.spark-version }} \
+            ${{ env.hadoop-version }} \
+            ${{ env.scala-version }} \
+            ${{ env.py4j-version }} \
+        
         # with:
         #   spark-version: "9999999"
         #   hadoop-version: "11111111"
