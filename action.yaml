@@ -15,14 +15,18 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Setup apache spark
+    - name: Test inputs
       shell: bash
       run: |
-        bash ./.github/workflows/setup-spark.sh \ 
-          ${{ inputs.spark-version }} \
-          ${{ inputs.hadoop-version }} \
-          ${{ inputs.py4j-version }} \
-          ${{ inputs.scala-version }} \
+        echo ${{ inputs.spark-version }}
+    # - name: Setup apache spark
+    #   shell: bash
+    #   run: |
+    #     bash ./.github/workflows/setup-spark.sh \ 
+    #       ${{ inputs.spark-version }} \
+    #       ${{ inputs.hadoop-version }} \
+    #       ${{ inputs.py4j-version }} \
+    #       ${{ inputs.scala-version }} \
 
     - name: Test Spark Installation
       shell: bash
