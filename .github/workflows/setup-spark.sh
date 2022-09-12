@@ -2,6 +2,8 @@
 
 echo "My new spark version: $1"
 echo "My new hadoop version: $2"
+echo "My new scala version: $3"
+echo "My new py4j version: $4"
 
 # Declare and print ENV VARS
 SPARK_VERSION="3.2.1"
