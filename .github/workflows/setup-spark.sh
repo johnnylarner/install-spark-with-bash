@@ -1,31 +1,16 @@
 #!/bin/sh -l
 
-
-# Parse named arguments in yaml
-# which use `--arg value` syntax
-while [ $# -gt 0 ]; do
-    if [[ $1 == "--"* ]]; then
-        v="${1/--/}"
-        declare "$v"="$2"
-        shift
-    fi
-    shift
-done
-
-echo "My new spark version: $spark_version"
-# echo "My new hadoop version: $2"
-# echo "My new scala version: $3"
-# echo "My new py4j version: $4"
-
+# Positional arguments are declared as
+# variables
 
 # Declare and print ENV VARS
-SPARK_VERSION="3.2.1"
+SPARK_VERSION="$1"
 echo "Spark Version: $SPARK_VERSION"
-HADOOP_VERSION="3.2"
+HADOOP_VERSION="$2"
 echo "Hadoop Version: $HADOOP_VERSION"
-SCALA_VERSION=""
+SCALA_VERSION="$3"
 echo "Scala Version: $SCALA_VERSION"
-PY4J_VERSION="0.10.9"
+PY4J_VERSION="$4"
 echo "Py4j Version: $PY4J_VERSION"
 INSTALL_SLUG="spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION$SCALA_VERSION"
 SPARK_URL="https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/$INSTALL_SLUG.tgz"
@@ -87,7 +72,7 @@ echo "Installation completed at: $INSTALL_PATH" ||
 echo "Installation failed."
 
 echo "Setting up environment variables"
-export SPARK_HOME="$INSTALL_ROOT_FOLDER/spark" # Set for current session too
+SPARK_HOME="$INSTALL_ROOT_FOLDER/spark"
 echo SPARK_HOME="$SPARK_HOME" >> "$GITHUB_ENV"
 echo SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info"  >> "$GITHUB_ENV"
 echo PYTHONPATH="$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-$PY4J_VERSION-src.zip"  >> "$GITHUB_ENV"
