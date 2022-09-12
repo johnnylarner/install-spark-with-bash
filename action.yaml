@@ -1,0 +1,16 @@
+name: Install spark
+inputs:
+  spark-version:
+    required: true
+  hadoop-version:
+    required: true
+  scala-version:
+    required: false
+    default: ""
+  py4j-version:
+    required: false
+    default: "0.10.9"
+
+runs:
+  using: bash 
+  main: ./.github/workflows/setup-spark.sh
