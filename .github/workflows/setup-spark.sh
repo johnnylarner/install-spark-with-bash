@@ -2,13 +2,9 @@
 
 # Positional arguments are declared as
 # variables
-SPARK_VERSION=${{ inputs.spark-version }}
 echo "Spark Version: $SPARK_VERSION"
-HADOOP_VERSION=${{ inputs.hadoop-version }}
 echo "Hadoop Version: $HADOOP_VERSION"
-PY4J_VERSION=${{ inputs.py4j-version }}
 echo "Py4j Version: $PY4J_VERSION"
-SCALA_VERSION= ${{ inputs.scala-version }}
 echo "Scala Version: $SCALA_VERSION"
 INSTALL_SLUG="spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION$SCALA_VERSION"
 SPARK_URL="https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/$INSTALL_SLUG.tgz"

@@ -23,6 +23,11 @@ runs:
       shell: bash
       run: |
         bash ./.github/workflows/setup-spark.sh
+      env:
+        SPARK_VERSION: ${{ inputs.spark-version }}
+        HADOOP_VERSION: ${{ inputs.hadoop-version }}
+        PY4J_VERSION: ${{ inputs.py4j-version }}
+        SCALA_VERSION: ${{ inputs.scala-version }}
     - name: Test Spark Installation
       shell: bash
       run: | 
