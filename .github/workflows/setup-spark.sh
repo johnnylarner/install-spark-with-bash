@@ -1,9 +1,22 @@
 #!/bin/sh -l
 
-echo "My new spark version: $1"
-echo "My new hadoop version: $2"
-echo "My new scala version: $3"
-echo "My new py4j version: $4"
+
+# Parse named arguments in yaml
+# which use `--arg value` syntax
+while [ $# -gt 0 ]; do
+    if [[ $1 == "--"* ]]; then
+        v="${1/--/}"
+        declare "$v"="$2"
+        shift
+    fi
+    shift
+done
+
+echo "My new spark version: $spark_version"
+# echo "My new hadoop version: $2"
+# echo "My new scala version: $3"
+# echo "My new py4j version: $4"
+
 
 # Declare and print ENV VARS
 SPARK_VERSION="3.2.1"
